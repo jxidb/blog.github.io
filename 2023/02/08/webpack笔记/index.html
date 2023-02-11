@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Webpack 笔记基本配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384const path&#x3D;require(&amp;#x27;pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack笔记">
+<meta property="og:url" content="http://localhost:4000/2023/02/08/webpack%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Te">
+<meta property="og:description" content="Webpack 笔记基本配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384const path&#x3D;require(&amp;#x27;pa">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-02-08T04:40:27.095Z">
+<meta property="article:modified_time" content="2023-02-08T04:42:24.153Z">
+<meta property="article:author" content="梓潼">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+
+
+<title >webpack笔记</title>
+
+<!-- Favicon -->
+
+    <link href='/img/avatar.jpg?v=2.0.0' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/avatar.jpg?v=2.0.0' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"localhost","author":"梓潼","root":"/","typed_text":["家人平平安安","一切都好"],"theme_version":"2.0.0","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/avatar.jpg","icon16":"/img/avatar.jpg","icon32":"/img/avatar.jpg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"creative_commons":{"license":"by-nc-sa","language":"deed.zh"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-02-08 12:42:24"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.0" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/avatar.jpg">
+    
+    
+        <div class="trm-logo-text">
+            T<span>e</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            标签
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            分类
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/links/" target="">
+                    友链
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/comment/" target="">
+                    留言
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/project/" target="">
+                            小工具
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner video cover -->
+    <video autoplay="autoplay" loop muted playsinline webkit-playinginline class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3">
+        <source src="https://cdn.moji.com/websrc/video/autumn20190924.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        Your browser does not support HTML5 video.
+    </video>
+    <!-- banner video cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            webpack笔记
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2023
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div id="page-sidebar" class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    
+
+<div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Te
+    </h5>
+    
+        <div class="trm-label">
+            希望
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+                <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/jxidb" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="https://weibo.com/u/6587267566" title="Weibo" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-weibo"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+                <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                名称:
+            </div>
+            <div class="trm-label trm-label-light">
+                吴梓潼
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                22
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                工作:
+            </div>
+            <div class="trm-label trm-label-light">
+                前端实习生
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+                
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:1193259471@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#Webpack-笔记"  data-scroll-to="#Webpack-笔记"><span class="toc-number">1.</span> <span class="toc-text">Webpack 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#基本配置"  data-scroll-to="#基本配置"><span class="toc-number">1.1.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#配置选项"  data-scroll-to="#配置选项"><span class="toc-number">1.1.1.</span> <span class="toc-text">配置选项</span></a></li></ol></li></ol></li></ol>
+</div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div id="page-content" class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            02/08
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            12:40
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            梓潼
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Webpack-笔记"><a href="#Webpack-笔记" class="headerlink" title="Webpack 笔记"></a>Webpack 笔记</h1><h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HTMLWebpackPlugin</span>=<span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> &#123;<span class="title class_">CleanWebpackPlugin</span>&#125;=<span class="built_in">require</span>(<span class="string">&#x27;clean-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">  <span class="attr">mode</span>:<span class="string">&quot;development&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>:<span class="string">&#x27;./src/index.ts&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>:&#123;</span><br><span class="line">    <span class="attr">filename</span>:<span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>:path.<span class="title function_">resolve</span>(__dirname,<span class="string">&#x27;./dist&#x27;</span>),</span><br><span class="line">      <span class="comment">//自动清空上次打包结果</span></span><br><span class="line">      <span class="attr">clean</span>:<span class="literal">true</span></span><br><span class="line">      <span class="comment">// 告诉webpack生成代码时不使用箭头函数</span></span><br><span class="line">  <span class="attr">environment</span>:&#123;</span><br><span class="line">    <span class="attr">arrowFunction</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 告诉webpack生成代码时不使用const</span></span><br><span class="line">    <span class="attr">const</span>:<span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>:&#123;</span><br><span class="line">    <span class="attr">rules</span>:[</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>:<span class="regexp">/\.ts$/</span>,</span><br><span class="line">        <span class="comment">// 不处理的文件目录</span></span><br><span class="line">        <span class="attr">exclude</span>:<span class="regexp">/node_modiles/</span>,</span><br><span class="line">        <span class="attr">use</span>:[</span><br><span class="line">          &#123;</span><br><span class="line">       <span class="attr">loader</span>:<span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">       <span class="attr">options</span>:&#123;</span><br><span class="line">        <span class="attr">presets</span>:[</span><br><span class="line">          [<span class="string">&quot;@babel/preset-env&quot;</span>, &#123;</span><br><span class="line">            <span class="string">&quot;corejs&quot;</span>: &#123;</span><br><span class="line">              <span class="string">&quot;version&quot;</span>: <span class="number">3</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">&quot;useBuiltIns&quot;</span>: <span class="string">&quot;usage&quot;</span>,</span><br><span class="line">            <span class="string">&quot;targets&quot;</span>: &#123;</span><br><span class="line">              <span class="string">&quot;chrome&quot;</span>: <span class="string">&quot;88&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;]</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">&#x27;ts-loader&#x27;</span></span><br><span class="line">        ],</span><br><span class="line"></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>:<span class="regexp">/\.less$/</span>,</span><br><span class="line">        <span class="attr">use</span>:[</span><br><span class="line">          <span class="string">&quot;style-loader&quot;</span>,</span><br><span class="line">          <span class="string">&quot;css-loader&quot;</span>,</span><br><span class="line">          <span class="comment">//引入postcss</span></span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">loader</span>:<span class="string">&#x27;postcss-loader&#x27;</span>,</span><br><span class="line">            <span class="attr">options</span>:&#123;</span><br><span class="line">             <span class="attr">postcssOptions</span>:&#123;</span><br><span class="line">              <span class="attr">plugins</span>:[</span><br><span class="line">                <span class="string">&quot;postcss-preset-env&quot;</span>,</span><br><span class="line">                <span class="comment">// &#123;</span></span><br><span class="line">                <span class="comment">//   browsers:&#x27;last 2 versions&#x27;</span></span><br><span class="line">                <span class="comment">// &#125;</span></span><br><span class="line">              ]</span><br><span class="line">             &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">&quot;less-loader&quot;</span></span><br><span class="line">      ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HTMLWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="comment">// 以src目录下的index.html为模板进行创建html文件</span></span><br><span class="line">      <span class="attr">template</span>:path.<span class="title function_">resolve</span>(__dirname,<span class="string">&#x27;./src/index.html&#x27;</span>),</span><br><span class="line">      <span class="attr">title</span>:<span class="string">&#x27;贪吃蛇&#x27;</span>,</span><br><span class="line"></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 用来设置引用模块</span></span><br><span class="line"><span class="attr">resolve</span>:&#123;</span><br><span class="line">  <span class="comment">// 用来告诉webpack，凡是以ts和js结尾的文件都可以作为模块使用</span></span><br><span class="line">  <span class="attr">extensions</span>:[<span class="string">&#x27;.ts&#x27;</span>,<span class="string">&#x27;.js&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h3><ul>
+<li><p>entry：文件入口，表示从哪个文件为开头进行打包</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">entry</span>:<span class="string">&#x27;./src/index.ts&#x27;</span>,</span><br></pre></td></tr></table></figure></li>
+<li><p>output：输出文件配置项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output</span>:&#123;</span><br><span class="line"><span class="attr">filename</span>:<span class="string">&#x27;bundle.js&#x27;</span>,  <span class="comment">//最后文件的输出名称</span></span><br><span class="line"><span class="attr">path</span>:path.<span class="title function_">resolve</span>(__dirname,<span class="string">&#x27;dist&#x27;</span>)  <span class="comment">//最后文件的输出路径</span></span><br><span class="line">    <span class="comment">//告诉webpack打包时不要使用哪些代码选项</span></span><br><span class="line">    <span class="attr">environment</span>:&#123;</span><br><span class="line">        <span class="comment">//告诉webpack打包代码的时候不要使用箭头函数</span></span><br><span class="line">         <span class="attr">arrowFunction</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 告诉webpack生成代码时不使用const</span></span><br><span class="line">    <span class="attr">const</span>:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>module:表示当前使用的加载器</p>
+<ul>
+<li>常用加载器：css-loader,style-loader,less-loader</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">module</span>:&#123;</span><br><span class="line"><span class="attr">rules</span>:[</span><br><span class="line">	&#123;</span><br><span class="line">    <span class="comment">//表示以.css结尾的文件,全部先使用css-loader和style-loader进行编译之后再进行打包</span></span><br><span class="line">        <span class="attr">test</span>:<span class="regexp">/\.css$/</span></span><br><span class="line">        <span class="attr">use</span>:[</span><br><span class="line">        <span class="comment">//use从下往上执行，从右往左执行</span></span><br><span class="line">        <span class="string">&#x27;style-loader&#x27;</span>,  <span class="comment">//将js中的css通过创建style标签的形式，添加到html文件中生效</span></span><br><span class="line">        <span class="string">&#x27;css-loader&#x27;</span> <span class="comment">//将css资源编译成commonjs的模块到js中</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;，</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//表示以这些结尾的文件，</span></span><br><span class="line">        <span class="attr">test</span>:<span class="regexp">/\.png|jpe?g|gif|svg/</span>,</span><br><span class="line">        <span class="attr">type</span>:<span class="string">&#x27;asset&#x27;</span>,</span><br><span class="line">        <span class="attr">parser</span>:&#123;</span><br><span class="line">            <span class="comment">//小于10kb的图片自动转为base64</span></span><br><span class="line">            <span class="comment">//优点：减少网络请求，</span></span><br><span class="line">            <span class="comment">//缺点：打包体积会变大</span></span><br><span class="line">            <span class="attr">dataUrlCondition</span>:&#123;</span><br><span class="line">                <span class="attr">maxSize</span>:<span class="number">10</span>*<span class="number">1024</span>  <span class="comment">//10kb</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">            <span class="attr">generator</span>:&#123;</span><br><span class="line">                <span class="comment">//表示打包出来的图片文件，存放在dist文件下的static文件下的images文件下，名称就是hash值，就是一串字符，如果想名称短一点，就写[hash:10],就会变为长度为10的名称。ext就是后缀名，</span></span><br><span class="line">                <span class="attr">filename</span>:<span class="string">&#x27;static/images/[hash][ext][query]&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>plugins：插件 插件都需要先引入才能使用</p>
+<ul>
+<li>常用插件：html-webpack-plugin，clean-webpack-plugin</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugins</span>:[</span><br><span class="line">   <span class="keyword">new</span> <span class="title class_">HTMLWebpackPlugin</span>(&#123;</span><br><span class="line">     <span class="comment">// 以src目录下的index.html为模板进行创建html文件</span></span><br><span class="line">     <span class="attr">template</span>:path.<span class="title function_">resolve</span>(__dirname,<span class="string">&#x27;./src/index.html&#x27;</span>),</span><br><span class="line">     <span class="attr">title</span>:<span class="string">&#x27;贪吃蛇&#x27;</span>,</span><br><span class="line"></span><br><span class="line">   &#125;),</span><br><span class="line">   <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()</span><br><span class="line"> ],</span><br></pre></td></tr></table></figure></li>
+<li><p>resolve:设置模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用来设置引用模块</span></span><br><span class="line"><span class="attr">resolve</span>: &#123;</span><br><span class="line">  <span class="comment">// 用来告诉webpack，凡是以ts和js结尾的文件都可以作为模块使用</span></span><br><span class="line">  <span class="attr">extensions</span>: [<span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+</article>
+    
+    <div class="trm-reward">
+        
+            <span class="trm-reward-btn trm-glow" onclick='var qr = document.getElementById("qr"); qr.style.display = (qr.style.display === "none") ? "block" : "none";'>
+                <i class="iconfont fas fa-hand-holding-usd"></i>
+            </span>
+        
+        <p class="trm-reward-comment">请喝奶茶</p>
+        <div id="qr" style="display:none;">
+            
+                <div style="display:inline-block">
+                    <a rel="noopener noreferrer" href='http://rpkbkcafx.hn-bkt.clouddn.com/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg' target='_blank' >
+                       <img src="http://rpkbkcafx.hn-bkt.clouddn.com/%E6%94%AF%E4%BB%98%E5%AE%9D.jpg" alt="支付宝" loading="lazy">
+                    </a>
+                    <p>支付宝</p>
+                </div>
+            
+                <div style="display:inline-block">
+                    <a rel="noopener noreferrer" href='http://rpkbkcafx.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1.jpg' target='_blank' >
+                       <img src="http://rpkbkcafx.hn-bkt.clouddn.com/%E5%BE%AE%E4%BF%A1.jpg" alt="微信" loading="lazy">
+                    </a>
+                    <p>微信</p>
+                </div>
+            
+        </div>
+    </div>
+
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        梓潼
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="http://localhost:4000/2023/02/08/webpack%E7%AC%94%E8%AE%B0/" title="webpack笔记">http://localhost:4000/2023/02/08/webpack%E7%AC%94%E8%AE%B0/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+</div>
+<div id="post-next-prev" class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2023/02/07/2-7/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="http://rpkbkcafx.hn-bkt.clouddn.com/20190510095504_tethg.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+                    技术类
+                </a>
+            </div>
+            <h5>
+                <a href="/2023/02/07/2-7/" class="trm-anima-link">
+                    今天是2023.2.7的笔记
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/02/07</li>
+                <li>12:04</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50">
+    <div id="tcomment"></div>
+</div>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2023- 2023</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">Te</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.2
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.0.0
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item">
+            博客已萌萌哒运行 <span id="since" class="trm-accent-color"></span> 天
+        </div>
+     
+
+     
+</footer>
+
+<script>
+    function show_date_time () {
+        var BirthDay = new Date("02/5/2023 12:00:00");
+        var today = new Date();
+        var timeold = (today.getTime() - BirthDay.getTime());
+        var msPerDay = 24 * 60 * 60 * 1000
+        var day = Math.floor(timeold / msPerDay)
+        since.innerHTML = day
+    }
+    show_date_time()
+</script>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <i class="iconfont fas fa-arrows-alt-h"></i>
+        </div>
+    
+</div>
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  <div id="trm-back-top" class="trm-back-top" data-title="回到顶部">
+    <i class="iconfont fas fa-arrow-up"></i>
+</div>
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.0.0"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+
+            
+<script src="https://unpkg.com/twikoo@1.6.7/dist/twikoo.all.min.js" data-swup-reload-script data-reset="true"></script>
+
+            <script data-swup-reload-script>
+                const twikooConfig = {"enable":true,"envId":"https://twikoo-api-jxidb.vercel.app/"};
+                twikooConfig.el = '#tcomment';
+                twikoo.init(twikooConfig).then(function () {
+                    let container = document.querySelector('body>.tk-admin-container')
+                    if(container) container.remove()
+                    document.body.append(document.querySelector('.tk-admin-container'))
+                });;
+            </script>
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.0.0"></script>
+
+</body>
+
+</html>
