@@ -7,16 +7,23 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Te">
-<meta property="og:url" content="https://jxidb.github.io/blog.github.io/tags/typescript/index.html">
+<meta name="description" content="hexo 部署 Github Page 踩坑以此记录 hexo 部署 github page 时踩坑问题 插入七牛云外链图不显示问题 这是因为在 GitHub page 部署的网站是https协议的，而七牛云图片外链是http协议， 在 https 的网站中插入 http 协议的图片，会自动将 http 协议的图片转为 https 进行访问 而七牛云外链图片通过https协议是访问不了的 解决方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo部署github踩坑">
+<meta property="og:url" content="https://jxidb.github.io/blog.github.io/2023/02/12/hexo%E9%83%A8%E7%BD%B2github%E8%B8%A9%E5%9D%91/index.html">
 <meta property="og:site_name" content="Te">
+<meta property="og:description" content="hexo 部署 Github Page 踩坑以此记录 hexo 部署 github page 时踩坑问题 插入七牛云外链图不显示问题 这是因为在 GitHub page 部署的网站是https协议的，而七牛云图片外链是http协议， 在 https 的网站中插入 http 协议的图片，会自动将 http 协议的图片转为 https 进行访问 而七牛云外链图片通过https协议是访问不了的 解决方法">
 <meta property="og:locale">
+<meta property="og:image" content="https://jxidb.github.io/blog.github.io/img/404.jpg">
+<meta property="og:image" content="https://jxidb.github.io/blog.github.io/img/404.jpg">
+<meta property="article:published_time" content="2023-02-12T07:25:36.957Z">
+<meta property="article:modified_time" content="2023-02-12T08:06:48.827Z">
 <meta property="article:author" content="梓潼">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jxidb.github.io/blog.github.io/img/404.jpg">
 
 
-<title >Te</title>
+<title >hexo部署github踩坑</title>
 
 <!-- Favicon -->
 
@@ -58,7 +65,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"jxidb.github.io","author":"梓潼","root":"/blog.github.io/","typed_text":["家人平平安安","一切都好"],"theme_version":"2.0.0","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/avatar.jpg","icon16":"/img/avatar.jpg","icon32":"/img/avatar.jpg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"creative_commons":{"license":"by-nc-sa","language":"deed.zh"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2023-02-12 15:15:45"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-02-12 16:06:48"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/blog.github.io/css/index.css?v=2.0.0" id="trm-switch-style">
@@ -232,7 +239,8 @@
             <!-- top bar end -->
 
             <!-- body -->
-            <div class="trm-content-start">
+            
+<div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner" data-scroll data-scroll-direction="vertical">
     
@@ -256,10 +264,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            The article archive
+                            NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            云间连下榻，<br>天上接行杯。
+                            hexo部署github踩坑
                         </h1>
 
                         
@@ -269,7 +277,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        tags
+                                        2023
                                     </span
                                 ></li>
                             </ul>
@@ -301,7 +309,17 @@
 <div class="trm-main-card-frame trm-sidebar">
     <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
     
-        <!-- card header -->
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
 <div class="trm-mc-header">
     <div class="trm-avatar-frame trm-mb-20">
         <img alt="Avatar" class="trm-avatar" src="/blog.github.io/img/avatar.jpg">
@@ -319,7 +337,7 @@
     
 </div>
 <!-- card header end -->
-        <!-- sidebar social -->
+                <!-- sidebar social -->
 
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <div class="trm-social">
@@ -335,7 +353,7 @@
 </div>
 
 <!-- sidebar social end -->
-        <!-- info -->
+                <!-- info -->
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <ul class="trm-table trm-mb-20">
     
@@ -369,7 +387,7 @@
 </ul>
 <!-- info end -->
 
-        
+                
     <div class="trm-divider trm-mb-40 trm-mt-40"></div>
     <!-- action button -->
     <div class="text-center">
@@ -380,6 +398,13 @@
     </div>
     <!-- action button end -->
 
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#hexo-部署-Github-Page-踩坑"  data-scroll-to="#hexo-部署-Github-Page-踩坑"><span class="toc-number">1.</span> <span class="toc-text">hexo 部署 Github Page 踩坑</span></a></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#插入七牛云外链图不显示问题"  data-scroll-to="#插入七牛云外链图不显示问题"><span class="toc-number">2.</span> <span class="toc-text">插入七牛云外链图不显示问题</span></a></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#GitHub-Page-问题"  data-scroll-to="#GitHub-Page-问题"><span class="toc-number">3.</span> <span class="toc-text">GitHub Page 问题</span></a></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#路径问题"  data-scroll-to="#路径问题"><span class="toc-number">4.</span> <span class="toc-text">路径问题</span></a></li></ol>
+</div>
+            </div>
+        </div>
     
     </div>
 </div>
@@ -390,73 +415,146 @@
                 <div class="trm-content" id="trm-content">
                     <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
 
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="row trm-tag-list trm-list" itemprop="keywords"><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/blog.github.io/tags/JS/" rel="tag">JS</a><span class="tag-list-count">2</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/blog.github.io/tags/typescript/" rel="tag">typescript</a><span class="tag-list-count">1</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/blog.github.io/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li></ul>
-                
-            </div>
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            02/12
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            15:25
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            梓潼
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="hexo-部署-Github-Page-踩坑"><a href="#hexo-部署-Github-Page-踩坑" class="headerlink" title="hexo 部署 Github Page 踩坑"></a>hexo 部署 Github Page 踩坑</h1><p>以此记录 hexo 部署 github page 时踩坑问题</p>
+<h1 id="插入七牛云外链图不显示问题"><a href="#插入七牛云外链图不显示问题" class="headerlink" title="插入七牛云外链图不显示问题"></a>插入七牛云外链图不显示问题</h1><ol>
+<li>这是因为在 GitHub page 部署的网站是<strong style="color:red">https</strong>协议的，而七牛云图片外链是<strong style="color:red">http</strong>协议，</li>
+<li>在 https 的网站中插入 http 协议的图片，会自动将 http 协议的图片转为 https 进行访问</li>
+<li>而七牛云外链图片通过<strong style="color:red">https</strong>协议是访问不了的</li>
+<li>解决方法<ol>
+<li>换乘 https 协议的外联（但是七牛云的 https 要钱好像，所以我换了一个网站，也是免费的 <a target="_blank" rel="noopener" href="https://thumbsnap.com/%EF%BC%89">https://thumbsnap.com/）</a></li>
+<li>直接点击 Upload 选中需要上传的图片就可以</li>
+</ol>
+</li>
+</ol>
+<h1 id="GitHub-Page-问题"><a href="#GitHub-Page-问题" class="headerlink" title="GitHub Page 问题"></a>GitHub Page 问题</h1><ol>
+<li>在新建仓库的时候，需要将仓库名设置为<strong style="color:red">username.github.io</strong>，这样才能生成 page，</li>
+<li>创建结束以后，直接在<strong style="color:red">setting</strong>里面找到 page 就可以</li>
+<li><img src="https://s2.loli.net/2023/02/12/YlrE2PmNwyQUTDj.png" alt="image-20230212160612243" loading="lazy" onerror='this.onerror=null;this.src="/blog.github.io/img/404.jpg"'></li>
+<li>点击后面的按钮，就可以访问网站，有时候可能会有延迟，需要等一会网页才能加载出来</li>
+</ol>
+<h1 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h1><ol>
+<li>当 hexo 部署到 GitHub page 以后，网页可以正常访问，但是 css，js 等资源加载 404</li>
+<li>是由于没有在 hexo 的配置文件中添加 root，</li>
+<li><img src="https://s2.loli.net/2023/02/12/wYWcV63s9xtKJZl.png" alt="image-20230212160516024" loading="lazy" onerror='this.onerror=null;this.src="/blog.github.io/img/404.jpg"'></li>
+<li>这个 root 后面跟的就是仓库名，前后两个<strong style="color:red">/</strong>不能省略</li>
+</ol>
 
-<!-- history -->
+</article>
+    
+    <div class="trm-reward">
+        
+            <span class="trm-reward-btn trm-glow" onclick='var qr = document.getElementById("qr"); qr.style.display = (qr.style.display === "none") ? "block" : "none";'>
+                <i class="iconfont fas fa-hand-holding-usd"></i>
+            </span>
+        
+        <p class="trm-reward-comment">请喝奶茶</p>
+        <div id="qr" style="display:none;">
+            
+                <div style="display:inline-block">
+                    <a rel="noopener noreferrer" href='https://thumbsnap.com/i/1wcYeega.jpg?0212' target='_blank' >
+                       <img src="https://thumbsnap.com/i/1wcYeega.jpg?0212" alt="支付宝" loading="lazy">
+                    </a>
+                    <p>支付宝</p>
+                </div>
+            
+                <div style="display:inline-block">
+                    <a rel="noopener noreferrer" href='https://thumbsnap.com/i/pwEZSMM4.jpg?0212' target='_blank' >
+                       <img src="https://thumbsnap.com/i/pwEZSMM4.jpg?0212" alt="微信" loading="lazy">
+                    </a>
+                    <p>微信</p>
+                </div>
+            
+        </div>
+    </div>
 
-<div class="row">
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        梓潼
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="https://jxidb.github.io/blog.github.io/2023/02/12/hexo%E9%83%A8%E7%BD%B2github%E8%B8%A9%E5%9D%91/" title="hexo部署github踩坑">https://jxidb.github.io/blog.github.io/2023/02/12/hexo%E9%83%A8%E7%BD%B2github%E8%B8%A9%E5%9D%91/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+</div>
+<div id="post-next-prev" class="row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                typescript
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/blog.github.io/2023/01/31/js/" class="trm-cover-frame trm-anima-link">
             
-            <div class="trm-timeline-item trm-scroll-animation" data-scroll data-scroll-offset="40">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-a trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/blog.github.io/2023/02/04/typescript/" class="trm-anima-link">
-                                        Typescript笔记
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">02/04</li>
-                                        <li class="trm-accent-color">23:12</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
+            
+                <img alt="cover" class="no-fancybox" src="/blog.github.io/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /blog.github.io/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+                    技术类
+                </a>
             </div>
-            
+            <h5>
+                <a href="/blog.github.io/2023/01/31/js/" class="trm-anima-link">
+                    js笔记
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/01/31</li>
+                <li>18:24</li>
+                
+                
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
+    
 
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
-    </div>
-
-
+    <div class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50">
+    <div id="tcomment"></div>
+</div>
 
 
 
@@ -521,6 +619,10 @@
 
             <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
     
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
     
         <div class="trm-fixed-btn" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
             <i class="iconfont fas fa-arrows-alt-h"></i>
@@ -563,6 +665,25 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
+
+            
+<script src="https://unpkg.com/twikoo@1.6.7/dist/twikoo.all.min.js" data-swup-reload-script data-reset="true"></script>
+
+            <script data-swup-reload-script>
+                const twikooConfig = {"enable":true,"envId":"https://twikoo-api-jxidb.vercel.app/"};
+                twikooConfig.el = '#tcomment';
+                twikoo.init(twikooConfig).then(function () {
+                    let container = document.querySelector('body>.tk-admin-container')
+                    if(container) container.remove()
+                    document.body.append(document.querySelector('.tk-admin-container'))
+                });;
+            </script>
+
+        
     
 
 
